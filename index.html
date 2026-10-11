@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portcloud 是面向独立开发者与创业团队的开箱即用服务平台。配置你需要的服务，其余基础设施交给 Portcloud。如果只需要一个端口，不要为整台主机付费。">
+  <meta name="theme-color" content="#f8faff">
+  <title>Portcloud — Need a port. Not a server.</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
+  <script src="assets/language.js" defer></script>
+  <style>
+    :root {
+      --ink: #0f162a; --muted: #59657b; --blue: #0032fc; --line: #e1e7f1;
+      --gradient: linear-gradient(105deg, #0028fc, #008ffc 65%, #00c9ee);
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: var(--font); color: var(--ink); background: #fff; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-offset: 6px; }
+    p, h1, h2, h3 { margin: 0; }
+    svg { display: block; }
+    .wrap { width: min(1120px, 100%); padding: 0 28px; margin: auto; }
+    .skip { position: absolute; left: 20px; top: -100px; z-index: 100; background: #fff; padding: 12px; }
+    .skip:focus { top: 12px; }
+    nav { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(16px); border-bottom: 1px solid var(--line); }
+    .nav-inner { height: 80px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand img { display: block; width: 174px; height: 58px; }
+    .nav-links { display: flex; gap: 30px; color: var(--muted); font-size: 14px; }
+    .nav-links a:hover, .footer-links a:hover { color: var(--blue); }
+    .nav-actions { display: flex; align-items: center; gap: 16px; }
+    .language-toggle { border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px; background: #fff; color: var(--ink); font: 600 13px var(--font); cursor: pointer; }
+    .language-toggle:hover { border-color: var(--blue); color: var(--blue); }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; padding: 13px 24px; border-radius: 999px; font-size: 14px; font-weight: 650; transition: transform .18s, box-shadow .18s; }
+    .button:hover { transform: translateY(-2px); }
+    .primary { background: var(--gradient); color: #fff; box-shadow: 0 8px 24px #0032fc20; }
+    .secondary { border: 1px solid var(--line); background: #fff; }
+    section { scroll-margin-top: 110px; }
+    .hero { position: relative; padding: 92px 0 80px; background: radial-gradient(ellipse at 90% 15%, #eafaff 0%, transparent 50%), radial-gradient(ellipse at 10% 0%, #f0f4ff 0%, transparent 45%); }
+    .hero-content { text-align: center; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: var(--blue); background: #005afc0d; border: 1px solid #005afc29; padding: 7px 16px; border-radius: 999px; margin-bottom: 30px; }
+    .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gradient); }
+    h1 { font-size: clamp(42px, 6.4vw, 78px); font-weight: 800; letter-spacing: -.025em; line-height: 1.08; }
+    .gradient { background: var(--gradient); background-clip: text; -webkit-background-clip: text; color: transparent; }
+    .hero-title { font-size: 21px; font-weight: 650; margin-top: 26px; text-wrap: balance; }
+    .hero-slogan { font-size: 16px; color: var(--muted); margin-top: 12px; }
+    .hero-copy { font-size: 16px; color: var(--muted); max-width: 640px; margin: 24px auto 0; text-wrap: balance; }
+    .hero-actions { margin-top: 36px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .hero-actions .button { padding: 16px 32px; font-size: 16px; }
+    .icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 16px; background: #edf3ff; color: #0755dd; flex: none; }
+    .icon.notify { background: #eaf9ff; color: #007da6; }
+    .icon svg { width: 26px; height: 26px; }
+    .brand-line { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 22px 0; }
+    .brand-line .wrap { display: flex; justify-content: space-between; gap: 20px; align-items: center; }
+    .brand-line strong { font-size: 15px; font-weight: 600; }
+    .brand-line span { font-family: var(--mono); color: var(--muted); font-size: 12px; }
+    .section { padding: 88px 0; }
+    .section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 32px; }
+    .kicker { font-size: 11px; color: var(--blue); letter-spacing: .13em; font-weight: 700; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-size: clamp(28px, 3.2vw, 38px); letter-spacing: -.025em; line-height: 1.3; }
+    .section-heading p { max-width: 380px; color: var(--muted); font-size: 14px; }
+    .products { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .product { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 22px; padding: 28px; background: linear-gradient(150deg, #f6f9ff, #fff 65%); }
+    a.product { transition: border-color .18s, box-shadow .18s; }
+    a.product:hover { border-color: #8aaeff; box-shadow: 0 16px 36px -24px #0032fc60; }
+    .product-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 26px; }
+    .status { display: inline-flex; align-items: center; gap: 7px; font-size: 11px; font-weight: 600; padding: 5px 10px; border-radius: 999px; background: #eaf6f0; color: #1a704d; }
+    .status::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: currentColor; }
+    .product h3 { font-size: 23px; letter-spacing: -.02em; }
+    .description { color: var(--muted); font-size: 14px; margin: 14px 0 28px; }
+    .product-action { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: var(--blue); border-top: 1px solid var(--line); padding-top: 18px; margin-top: auto; font-size: 13px; font-weight: 600; }
+    .product.planned { background: #fafbfe; }
+    .planned .status { color: var(--muted); background: #edf0f6; }
+    .planned .icon { background: #eef1f7; color: #66748c; }
+    .planned .product-action { color: var(--muted); font-weight: 400; }
+    .catalog-note { color: var(--muted); font-size: 12px; margin-top: 22px; }
+    .number { font-family: var(--mono); font-size: 13px; }
+    .philosophy { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+    .philosophy-copy { margin-top: 20px; font-size: 15px; color: var(--muted); }
+    .principle { padding: 22px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: 32px 1fr; gap: 16px; }
+    .principle:first-child { padding-top: 0; }
+    .principle .number { padding-top: 3px; color: var(--blue); }
+    .principle h3 { font-size: 17px; }
+    .principle p { font-size: 14px; color: var(--muted); margin-top: 6px; }
+    .closing { padding: 52px 40px; border-radius: 24px; background: #101c38; color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+    .closing h2 { font-size: clamp(24px, 3vw, 32px); }
+    .closing p { font-size: 14px; color: #b6c5e1; margin-top: 10px; }
+    .closing .button { background: #fff; color: #0032fc; flex: none; }
+    footer { margin-top: 80px; border-top: 1px solid var(--line); padding: 32px 0; }
+    .footer-main { display: flex; justify-content: space-between; gap: 24px; align-items: center; }
+    .footer-main img { width: 150px; height: 50px; display: block; }
+    .footer-links { display: flex; gap: 24px; font-size: 13px; color: var(--muted); }
+    .footer-base { display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: 11px; margin-top: 22px; }
+    @media (max-width: 960px) {
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .philosophy { gap: 40px; }
+      .nav-links { gap: 18px; }
+    }
+    @media (max-width: 760px) {
+      .hero { padding: 54px 0; }
+      .philosophy { grid-template-columns: 1fr; gap: 40px; }
+      .hero-title { font-size: 17px; }
+      .nav-links { display: none; }
+      .section { padding: 60px 0; }
+      .section-heading { align-items: flex-start; flex-direction: column; gap: 16px; }
+      .section-heading p { max-width: none; }
+      .products { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .brand-line .wrap { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .closing { flex-direction: column; align-items: flex-start; padding: 32px; }
+      .footer-main { flex-wrap: wrap; }
+    }
+    @media (max-width: 440px) {
+      .wrap { padding: 0 20px; }
+      .brand img { width: 145px; height: 48px; }
+      .nav-inner { gap: 10px; height: 72px; }
+      .nav-inner .button { padding: 10px 16px; font-size: 12px; }
+      .nav-actions .primary { display: none; }
+      .hero-actions .button { width: 100%; padding: 15px 18px; }
+      .product { padding: 24px; }
+      .products { grid-template-columns: 1fr; }
+      .footer-links { flex-wrap: wrap; gap: 16px; }
+      .footer-base { flex-direction: column; gap: 6px; }
+      .brand-line strong { font-size: 14px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .button, a.product { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#services" data-en="Skip to services">跳到服务目录</a>
+  <nav aria-label="主导航" data-en-label="Main navigation">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top" aria-label="Portcloud 首页" data-en-label="Portcloud home"><img src="assets/logo.svg" alt="Portcloud" width="2048" height="682"></a>
+      <div class="nav-links"><a href="#services" data-en="Services">服务目录</a><a href="#about" data-en="Our philosophy">我们的理念</a></div>
+      <div class="nav-actions">
+        <button class="language-toggle" type="button" aria-label="Switch to English" lang="en" hidden>EN</button>
+        <a class="button primary" href="#services"><span data-en="Explore services">探索服务</span> <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </nav>
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-content">
+        <p class="eyebrow">From servers to services</p>
+        <h1>Need a <span class="gradient">port</span>.<br>Not a server.</h1>
+        <p class="hero-title" data-en="You need a service, not a server.">你需要的是一个服务，不是一台服务器。</p>
+        <p class="hero-slogan" data-en="If all you need is a port, don't pay for the whole server.">如果只需要一个端口，不要为整台主机付费。</p>
+        <p class="hero-copy" data-en="Ready-to-use services for independent developers and startup teams. Configure the service you need. Leave the infrastructure to Portcloud.">面向独立开发者与创业团队的开箱即用服务平台。<br>配置你需要的服务，其余基础设施交给 Portcloud。</p>
+        <div class="hero-actions"><a class="button primary" href="#services"><span data-en="Find your service">探索你需要的服务</span> <span aria-hidden="true">→</span></a><a class="button secondary" href="#about" data-en="Meet Portcloud">了解 Portcloud</a></div>
+      </div>
+    </header>
+    <div class="brand-line"><div class="wrap"><strong data-en="Developers need services, not servers.">开发者需要的是服务，不是服务器。</strong><span>Pay for the service, not the server.</span></div></div>
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="kicker">Ready-to-use services</p><h2 id="services-title" data-en="Choose the capability you need.">选择你需要的能力。</h2></div><p data-en="Start with a need, not an infrastructure project. Use available services today, with more on the way.">从一个具体需求开始，不必先搭一套基础设施。<br>已上线服务可直接使用，更多服务逐步到来。</p></div>
+        <div class="products">
+          <a class="product" href="https://vpn.portcloud.online/">
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg></span><span class="status" data-en="Available">已上线</span></div>
+            <h3>Portcloud VPN</h3><p class="description" data-en="Global proxy nodes, ready to use. Connect without setting up or maintaining your own nodes.">全球节点代理服务，直接使用连接能力，无需自己搭建与维护节点。</p>
+            <span class="product-action"><span data-en="Open service">访问服务</span><span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="product" href="https://notify.portcloud.online/">
+            <div class="product-top"><span class="icon notify" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="m3 5 18 7-18 7 4-7-4-7Z"/><path d="M7 12h14"/></svg></span><span class="status" data-en="Available">已上线</span></div>
+            <h3>Portcloud Notify</h3><p class="description" data-en="Multi-channel notifications via API, with Agent integration. Bring messaging into your apps and workflows.">通过 API 多渠道推送消息，支持 Agent 接入，把通知能力接入应用和工作流。</p>
+            <span class="product-action"><span data-en="Open service">访问服务</span><span aria-hidden="true">↗</span></span>
+          </a>
+          <article class="product planned">
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="8" width="8" height="8" rx="2"/><path d="M10 3v5m4-5v5m-4 8v5m4-5v5M3 10h5m-5 4h5m8-4h5m-5 4h5"/></svg></span><span class="status" data-en="Planned">规划中</span></div>
+            <h3>Portcloud AI Gateway</h3><p class="description" data-en="A multi-tenant LLM gateway providing a unified entry point for model calls.">多租户 LLM 网关，为大模型调用提供统一接入入口。</p>
+            <p class="product-action" data-en="Not yet available">尚未上线</p>
+          </article>
+          <article class="product planned">
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18m-5-5 5 5-5 5M21 16H3m5-5-5 5 5 5"/></svg></span><span class="status" data-en="Planned">规划中</span></div>
+            <h3>Portcloud Proxy</h3><p class="description" data-en="An API reverse proxy with routes optimized for mainland China.">API 反向代理，提供面向中国大陆的优化线路。</p>
+            <p class="product-action" data-en="Not yet available">尚未上线</p>
+          </article>
+          <article class="product planned">
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 4h16v12H9l-5 4V4Z"/><path d="M8 8h8M8 12h5"/></svg></span><span class="status" data-en="Planned">规划中</span></div>
+            <h3>Portcloud Chat</h3><p class="description" data-en="Multi-tenant Open WebUI chat. Connect your own AI backend.">多租户 Open WebUI 聊天服务，需要自行接入 AI 后端。</p>
+            <p class="product-action" data-en="Not yet available">尚未上线</p>
+          </article>
+          <article class="product planned">
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M12 5v14"/></svg></span><span class="status" data-en="Coming soon">敬请期待</span></div>
+            <h3 data-en="Stay tuned…">敬请期待…</h3>
+            <p class="product-action" data-en="More to come">更多可能</p>
+          </article>
+        </div>
+        <p class="catalog-note" data-en="Planned services are not yet available. Features and launch dates will be confirmed when released.">标为「规划中」的服务尚未开放，具体功能与上线时间以正式发布为准。</p>
+      </div>
+    </section>
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap philosophy">
+        <div><p class="kicker">Services, not servers</p><h2 id="about-title" data-en="Get the capability you need, not a machine waiting to be configured.">买你需要的能力，<br>不是一台等待配置的机器。</h2><p class="philosophy-copy" data-en="Your needs should come first. Portcloud turns them into ready-to-use services, instead of making you buy a machine and build everything yourself.">从你的实际需求出发，Portcloud 把能力变成可以直接使用的服务，而不是让你先买一台主机，再自己把它变成想要的东西。</p></div>
+        <div>
+          <div class="principle"><span class="number">01</span><div><h3 data-en="Choose capabilities, not machine specs">选择能力，不选择机器配置</h3><p data-en="Start with the problem a service solves, not CPU, memory or containers.">先看服务能帮你解决什么问题，而不是从 CPU、内存和容器开始。</p></div></div>
+          <div class="principle"><span class="number">02</span><div><h3 data-en="Connect and use, not deploy from scratch">接入使用，不从零部署</h3><p data-en="Visit the service website and follow its setup instructions. No need to deploy your own instance first.">进入服务网站，按服务的接入方式配置使用。无需先部署你自己的服务实例。</p></div></div>
+          <div class="principle"><span class="number">03</span><div><h3 data-en="Focus on your apps and workflows">专注你的应用和工作流</h3><p data-en="Portcloud manages the infrastructure so you can focus on what you want to accomplish.">基础设施由 Portcloud 管理，你把精力留给真正想完成的事情。</p></div></div>
+        </div>
+      </div>
+    </section>
+    <div class="wrap"><div class="closing"><div><h2 data-en="Less infrastructure. More room to create.">少一套基础设施，多一点创造。</h2><p>Pay for the service, not the server.</p></div><a class="button" href="#services"><span data-en="Find your service">找到你需要的服务</span> <span aria-hidden="true">→</span></a></div></div>
+  </main>
+  <footer>
+    <div class="wrap">
+      <div class="footer-main"><a href="#top" aria-label="Portcloud 回到首页" data-en-label="Portcloud back to top"><img src="assets/logo.svg" alt="Portcloud" width="2048" height="682"></a><div class="footer-links"><a href="#services" data-en="Services">服务目录</a><a href="#about" data-en="Our philosophy">品牌理念</a></div></div>
+      <div class="footer-base"><span>© 2026 Portcloud</span><span>Need a port. Not a server.</span></div>
+    </div>
+  </footer>
+</body>
+</html>
