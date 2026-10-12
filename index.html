@@ -75,7 +75,6 @@
     .planned .status { color: var(--muted); background: #edf0f6; }
     .planned .icon { background: #eef1f7; color: #66748c; }
     .planned .product-action { color: var(--muted); font-weight: 400; }
-    .catalog-note { color: var(--muted); font-size: 12px; margin-top: 22px; }
     .number { font-family: var(--mono); font-size: 13px; }
     .philosophy { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
     .philosophy-copy { margin-top: 20px; font-size: 15px; color: var(--muted); }
@@ -84,6 +83,10 @@
     .principle .number { padding-top: 3px; color: var(--blue); }
     .principle h3 { font-size: 17px; }
     .principle p { font-size: 14px; color: var(--muted); margin-top: 6px; }
+    .agent-section { padding-top: 0; }
+    .agent-panel { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; padding: 52px; border: 1px solid #cddcff; border-radius: 24px; background: linear-gradient(120deg, #edf3ff, #f3fbff); }
+    .agent-panel h2 { font-size: clamp(30px, 3.6vw, 44px); }
+    .agent-copy { margin: 22px 0 28px; color: var(--muted); font-size: 16px; }
     .closing { padding: 52px 40px; border-radius: 24px; background: #101c38; color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
     .closing h2 { font-size: clamp(24px, 3vw, 32px); }
     .closing p { font-size: 14px; color: #b6c5e1; margin-top: 10px; }
@@ -101,6 +104,7 @@
     @media (max-width: 760px) {
       .hero { padding: 54px 0; }
       .philosophy { grid-template-columns: 1fr; gap: 40px; }
+      .agent-panel { grid-template-columns: 1fr; gap: 36px; padding: 32px; }
       .hero-title { font-size: 17px; }
       .nav-links { display: none; }
       .section { padding: 60px 0; }
@@ -120,6 +124,7 @@
       .hero-actions .button { width: 100%; padding: 15px 18px; }
       .product { padding: 24px; }
       .products { grid-template-columns: 1fr; }
+      .agent-panel { padding: 28px 24px; }
       .footer-links { flex-wrap: wrap; gap: 16px; }
       .footer-base { flex-direction: column; gap: 6px; }
       .brand-line strong { font-size: 14px; }
@@ -184,12 +189,29 @@
             <p class="product-action" data-en="Not yet available">尚未上线</p>
           </article>
           <article class="product planned">
-            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M5 12h14M12 5v14"/></svg></span><span class="status" data-en="Coming soon">敬请期待</span></div>
-            <h3 data-en="Stay tuned…">敬请期待…</h3>
-            <p class="product-action" data-en="More to come">更多可能</p>
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="3" width="16" height="8" rx="2"/><rect x="4" y="13" width="16" height="8" rx="2"/><path d="M8 7h.01M8 17h.01M12 7h4M12 17h4"/></svg></span><span class="status" data-en="Planned">规划中</span></div>
+            <h3>Portcloud NAT VPS</h3>
+            <p class="description" data-en="NAT VPS on shared servers, with connectivity through NAT rather than a dedicated full host.">基于共享服务器的 NAT VPS，通过 NAT 提供网络连接，无需独享整台主机。</p>
+            <p class="product-action" data-en="Not yet available">尚未上线</p>
           </article>
         </div>
-        <p class="catalog-note" data-en="Planned services are not yet available. Features and launch dates will be confirmed when released.">标为「规划中」的服务尚未开放，具体功能与上线时间以正式发布为准。</p>
+      </div>
+    </section>
+    <section class="section agent-section" id="agents" aria-labelledby="agents-title">
+      <div class="wrap">
+        <div class="agent-panel">
+          <div>
+            <p class="kicker">Built for Agents</p>
+            <h2 id="agents-title" data-en="Every service. Ready for your Agent.">所有服务，<br>都能接入你的 Agent。</h2>
+            <p class="agent-copy" data-en="Agent integration is a capability across Portcloud, not just one product. Bring the services you need into your Agent's tasks and workflows.">Agent 接入不是某一个产品的专属功能，而是 Portcloud 所有服务的共同能力。让 Agent 在任务与工作流中使用你需要的服务。</p>
+            <a class="button primary" href="#services"><span data-en="Explore services for your Agent">为你的 Agent 选择服务</span><span aria-hidden="true">→</span></a>
+          </div>
+          <div>
+            <div class="principle"><span class="number">01</span><div><h3 data-en="Agent integration across every service">每一项服务，都支持 Agent 接入</h3><p data-en="From VPN and notifications to AI Gateway, Proxy, Chat and NAT VPS, Agent integration spans the entire service catalog.">从 VPN、通知到 AI Gateway、Proxy、Chat 和 NAT VPS，Agent 接入能力覆盖整个服务目录。</p></div></div>
+            <div class="principle"><span class="number">02</span><div><h3 data-en="Dedicated Skills for each service">每一项服务，都将提供对应 Skill</h3><p data-en="Dedicated Skills will be added to every service, giving your Agent instructions for connecting to and using it.">我们将为所有服务陆续提供对应的 Skill，让 Agent 了解如何接入与使用服务。</p></div></div>
+            <div class="principle"><span class="number">03</span><div><h3 data-en="Bring services into Agent workflows">把服务能力带进 Agent 工作流</h3><p data-en="Connect services to your Agent so it can use them as part of your tasks, rather than keeping them as standalone tools.">把服务接入 Agent，让服务能力成为任务执行的一部分，而不只是独立使用的工具。</p></div></div>
+          </div>
+        </div>
       </div>
     </section>
     <section class="section" id="about" aria-labelledby="about-title">
