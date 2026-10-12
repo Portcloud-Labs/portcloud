@@ -6,6 +6,8 @@
 
 <p align="center"><a href="https://portcloud.online">portcloud.online ↗</a></p>
 
+<p align="center"><a href="https://github.com/portcloud-labs">GitHub ↗</a> · <a href="https://blog.samoyed24.de/">个人博客 ↗</a></p>
+
 ## 关于 Portcloud
 
 Portcloud 是面向独立开发者与创业团队的开箱即用服务平台。
