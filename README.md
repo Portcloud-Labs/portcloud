@@ -6,7 +6,7 @@
 
 <p align="center"><a href="https://portcloud.online">portcloud.online ↗</a></p>
 
-<p align="center"><a href="https://github.com/portcloud-labs">GitHub ↗</a> · <a href="https://blog.samoyed24.de/">个人博客 ↗</a></p>
+<p align="center"><a href="https://github.com/portcloud-labs">GitHub</a></p>
 
 ## 关于 Portcloud
 
