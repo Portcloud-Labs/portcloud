@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portcloud 是面向独立开发者与创业团队的开箱即用服务平台。配置你需要的服务，其余基础设施交给 Portcloud。如果只需要一个端口，不要为整台主机付费。">
+  <meta name="description" content="Portcloud 是面向开发者的服务云：开箱即用的云服务，为独立开发者和创业团队而设计。选择你需要的能力，其余基础设施交给 Portcloud。如果只需要一个端口，不要为整台主机付费。">
   <meta name="theme-color" content="#f8faff">
   <title>Portcloud — Need a port. Not a server.</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo-mark.svg">
@@ -55,9 +55,7 @@
     .eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--gradient); }
     h1 { font-size: clamp(42px, 6.4vw, 78px); font-weight: 800; letter-spacing: -.025em; line-height: 1.08; }
     .gradient { background: var(--gradient); background-clip: text; -webkit-background-clip: text; color: transparent; }
-    .hero-title { font-size: 21px; font-weight: 650; margin-top: 26px; text-wrap: balance; }
-    .hero-slogan { font-size: 16px; color: var(--muted); margin-top: 12px; }
-    .hero-copy { font-size: 16px; color: var(--muted); max-width: 640px; margin: 24px auto 0; text-wrap: balance; }
+    .hero-subtitle { font-size: 17px; color: var(--muted); max-width: 680px; margin: 28px auto 0; text-wrap: balance; }
     .hero-actions { margin-top: 36px; display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
     .hero-actions .button { padding: 16px 32px; font-size: 16px; }
     .icon { width: 54px; height: 54px; display: grid; place-items: center; border-radius: 16px; background: #edf3ff; color: #0755dd; flex: none; }
@@ -94,10 +92,21 @@
     .principle .number { padding-top: 3px; color: var(--blue); }
     .principle h3 { font-size: 17px; }
     .principle p { font-size: 14px; color: var(--muted); margin-top: 6px; }
-    .agent-section { padding-top: 0; }
-    .agent-panel { display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; padding: 52px; border: 1px solid #cddcff; border-radius: 24px; background: linear-gradient(120deg, #edf3ff, #f3fbff); }
-    .agent-panel h2 { font-size: clamp(30px, 3.6vw, 44px); }
-    .agent-copy { margin: 22px 0 28px; color: var(--muted); font-size: 16px; }
+    .agent-band { display: grid; grid-template-columns: auto 1fr; gap: 6px 28px; align-items: baseline; margin-top: 36px; padding: 24px 28px; border: 1px dashed #c9d6ee; border-radius: 18px; background: #f8fbff; }
+    .agent-band h3 { font-size: 15px; letter-spacing: -.01em; }
+    .agent-band p { font-size: 13px; color: var(--muted); }
+    .flow-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .flow-card { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: 22px; background: #fff; color: var(--muted); display: flex; flex-direction: column; }
+    .flow-card--port { border-color: #c9d6ff; color: var(--ink); }
+    .flow-card-title { margin: 0 0 18px; font-size: 15px; font-weight: 600; }
+    .flow-card--port .flow-card-title { color: var(--blue); }
+    .flow-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 28px; flex: 1; justify-content: center; }
+    .flow-node { position: relative; display: flex; align-items: center; justify-content: center; gap: 10px; min-height: 56px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: #fff; font-size: 14px; }
+    .flow-card--port .flow-node { background: #edf2ff; border-color: #ccd8ff; }
+    .flow-node-icon { flex-shrink: 0; width: 20px; height: 20px; color: #97a3b8; }
+    .flow-card--port .flow-node-icon { color: var(--blue); }
+    .flow-arrow { position: absolute; top: calc(100% + 3px); left: 50%; transform: translateX(-50%); color: #b3bdd0; }
+    .flow-note { margin: 20px 0 0; font-size: 13px; line-height: 1.7; }
     .closing { padding: 52px 40px; border-radius: 24px; background: #101c38; color: #fff; display: flex; justify-content: space-between; align-items: center; gap: 30px; }
     .closing h2 { font-size: clamp(24px, 3vw, 32px); }
     .closing p { font-size: 14px; color: #b6c5e1; margin-top: 10px; }
@@ -115,8 +124,10 @@
     @media (max-width: 760px) {
       .hero { padding: 54px 0; }
       .philosophy { grid-template-columns: 1fr; gap: 40px; }
-      .agent-panel { grid-template-columns: 1fr; gap: 36px; padding: 32px; }
-      .hero-title { font-size: 17px; }
+      .agent-band { grid-template-columns: 1fr; gap: 4px; padding: 20px 24px; }
+      .flow-grid { grid-template-columns: minmax(0, 1fr); }
+      section { scroll-margin-top: 168px; }
+      .hero-subtitle { font-size: 15px; }
       .nav-inner { height: auto; flex-wrap: wrap; padding-top: 12px; padding-bottom: 16px; }
       .nav-links { order: 3; width: 100%; flex-wrap: wrap; gap: 12px 24px; }
       .section { padding: 60px 0; }
@@ -136,7 +147,7 @@
       .hero-actions .button { width: 100%; padding: 15px 18px; }
       .product { padding: 24px; }
       .products { grid-template-columns: 1fr; }
-      .agent-panel { padding: 28px 24px; }
+      .agent-band { padding: 18px 20px; }
       .footer-links { flex-wrap: wrap; gap: 16px; }
       .footer-base { flex-direction: column; gap: 6px; }
       .brand-line strong { font-size: 14px; }
@@ -165,27 +176,25 @@
   <main id="top">
     <header class="hero">
       <div class="wrap hero-content">
-        <p class="eyebrow">From servers to services</p>
+        <p class="eyebrow localized"><span lang="zh-CN">开发者服务云</span><span lang="en">Developer Service Cloud</span></p>
         <h1>Need a <span class="gradient">port</span>.<br>Not a server.</h1>
-        <p class="hero-title localized"><span lang="zh-CN">你需要的是一个服务，不是一台服务器。</span><span lang="en">You need a service, not a server.</span></p>
-        <p class="hero-slogan localized"><span lang="zh-CN">如果只需要一个端口，不要为整台主机付费。</span><span lang="en">If all you need is a port, don't pay for the whole server.</span></p>
-        <p class="hero-copy localized"><span lang="zh-CN">面向独立开发者与创业团队的开箱即用服务平台。<br>配置你需要的服务，其余基础设施交给 Portcloud。</span><span lang="en">Ready-to-use services for independent developers and startup teams. Configure the service you need. Leave the infrastructure to Portcloud.</span></p>
-        <div class="hero-actions"><a class="button primary" href="#services"><span class="localized"><span lang="zh-CN">探索你需要的服务</span><span lang="en">Find your service</span></span> <span aria-hidden="true">→</span></a><a class="button secondary localized" href="#about"><span lang="zh-CN">了解 Portcloud</span><span lang="en">Meet Portcloud</span></a></div>
+        <p class="hero-subtitle localized"><span lang="zh-CN">开箱即用的云服务，为独立开发者和创业团队而设计。<br>选择你需要的能力，域名、HTTPS 和基础设施交给 Portcloud。</span><span lang="en">Ready-to-use cloud services for developers and startup teams.<br>Choose the capabilities you need — domains, HTTPS and infrastructure are on Portcloud.</span></p>
+        <div class="hero-actions"><a class="button primary" href="#services"><span class="localized"><span lang="zh-CN">探索服务</span><span lang="en">Explore services</span></span> <span aria-hidden="true">→</span></a></div>
       </div>
     </header>
-    <div class="brand-line"><div class="wrap"><strong class="localized"><span lang="zh-CN">开发者需要的是服务，不是服务器。</span><span lang="en">Developers need services, not servers.</span></strong><span>Pay for the service, not the server.</span></div></div>
+    <div class="brand-line"><div class="wrap"><strong class="localized"><span lang="zh-CN">如果只需要一个端口，不要为整台主机付费。</span><span lang="en">If all you need is a port, don't pay for the whole server.</span></strong><span>Start with what you need, not what you need to deploy.</span></div></div>
     <section class="section" id="services" aria-labelledby="services-title">
       <div class="wrap">
-        <div class="section-heading"><div><p class="kicker">Ready-to-use services</p><h2 id="services-title" class="localized"><span lang="zh-CN">选择你需要的能力。</span><span lang="en">Choose the capability you need.</span></h2></div><p class="localized"><span lang="zh-CN">从一个具体需求开始，不必先搭一套基础设施。<br>已上线服务可直接使用，更多服务逐步到来。</span><span lang="en">Start with a need, not an infrastructure project. Use available services today, with more on the way.</span></p></div>
+        <div class="section-heading"><div><p class="kicker">Ready-to-use services</p><h2 id="services-title" class="localized"><span lang="zh-CN">选择你需要的能力。</span><span lang="en">Choose the capability you need.</span></h2></div><p class="localized"><span lang="zh-CN">从需求开始挑选能力，已上线服务可直接使用，更多服务逐步到来。</span><span lang="en">Pick what you need — available services work today, more on the way.</span></p></div>
         <div class="products">
-          <a class="product" href="https://vpn.portcloud.online/" target="_blank" rel="noopener noreferrer">
-            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg></span><span class="status localized"><span lang="zh-CN">已上线</span><span lang="en">Available</span></span></div>
-            <h3>Portcloud VPN</h3><p class="description localized"><span lang="zh-CN">全球节点代理服务，直接使用连接能力，无需自己搭建与维护节点。</span><span lang="en">Global proxy nodes, ready to use. Connect without setting up or maintaining your own nodes.</span></p>
-            <span class="product-action"><span class="localized"><span lang="zh-CN">访问服务</span><span lang="en">Open service</span></span><span aria-hidden="true">↗</span></span>
-          </a>
           <a class="product" href="https://notify.portcloud.online/" target="_blank" rel="noopener noreferrer">
             <div class="product-top"><span class="icon notify" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="m3 5 18 7-18 7 4-7-4-7Z"/><path d="M7 12h14"/></svg></span><span class="status localized"><span lang="zh-CN">已上线</span><span lang="en">Available</span></span></div>
-            <h3>Portcloud Notify</h3><p class="description localized"><span lang="zh-CN">通过 API 多渠道推送消息，支持 Agent 接入，把通知能力接入应用和工作流。</span><span lang="en">Multi-channel notifications via API, with Agent integration. Bring messaging into your apps and workflows.</span></p>
+            <h3>Portcloud Notify</h3><p class="description localized"><span lang="zh-CN">通过 API 多渠道推送消息，一个 Key、一个请求即可发送。</span><span lang="en">Multi-channel notifications over API — one key, one request.</span></p>
+            <span class="product-action"><span class="localized"><span lang="zh-CN">访问服务</span><span lang="en">Open service</span></span><span aria-hidden="true">↗</span></span>
+          </a>
+          <a class="product" href="https://vpn.portcloud.online/" target="_blank" rel="noopener noreferrer">
+            <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6.5h14M5 17.5h14"/></svg></span><span class="status localized"><span lang="zh-CN">已上线</span><span lang="en">Available</span></span></div>
+            <h3>Portcloud Connect</h3><p class="description localized"><span lang="zh-CN">全球代理出口节点，开箱即用的连接能力，无需自建与维护节点。</span><span lang="en">Global egress nodes with ready-to-use connectivity — nothing to build or maintain.</span></p>
             <span class="product-action"><span class="localized"><span lang="zh-CN">访问服务</span><span lang="en">Open service</span></span><span aria-hidden="true">↗</span></span>
           </a>
           <article class="product planned">
@@ -205,27 +214,14 @@
           </article>
           <article class="product planned">
             <div class="product-top"><span class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="4" y="3" width="16" height="8" rx="2"/><rect x="4" y="13" width="16" height="8" rx="2"/><path d="M8 7h.01M8 17h.01M12 7h4M12 17h4"/></svg></span><span class="status localized"><span lang="zh-CN">规划中</span><span lang="en">Planned</span></span></div>
-            <h3>Portcloud NAT VPS</h3>
-            <p class="description localized"><span lang="zh-CN">基于共享服务器的 NAT VPS，通过 NAT 提供网络连接，无需独享整台主机。</span><span lang="en">NAT VPS on shared servers, with connectivity through NAT rather than a dedicated full host.</span></p>
+            <h3>Portcloud Runtime</h3>
+            <p class="description localized"><span lang="zh-CN">共享主机上的轻量运行环境，NAT 网络连接，按需取用，不独享整台主机。</span><span lang="en">A lightweight runtime on shared hosts — NAT connectivity, no dedicated machine to buy or maintain.</span></p>
             <p class="product-action localized"><span lang="zh-CN">尚未上线</span><span lang="en">Not yet available</span></p>
           </article>
         </div>
-      </div>
-    </section>
-    <section class="section agent-section" id="agents" aria-labelledby="agents-title">
-      <div class="wrap">
-        <div class="agent-panel">
-          <div>
-            <p class="kicker">Built for Agents</p>
-            <h2 id="agents-title" class="localized"><span lang="zh-CN">所有服务，<br>都能接入你的 Agent。</span><span lang="en">Every service. Ready for your Agent.</span></h2>
-            <p class="agent-copy localized"><span lang="zh-CN">Agent 接入不是某一个产品的专属功能，而是 Portcloud 所有服务的共同能力。让 Agent 在任务与工作流中使用你需要的服务。</span><span lang="en">Agent integration is a capability across Portcloud, not just one product. Bring the services you need into your Agent's tasks and workflows.</span></p>
-            <a class="button primary" href="#services"><span class="localized"><span lang="zh-CN">为你的 Agent 选择服务</span><span lang="en">Explore services for your Agent</span></span><span aria-hidden="true">→</span></a>
-          </div>
-          <div>
-            <div class="principle"><span class="number">01</span><div><h3 class="localized"><span lang="zh-CN">每一项服务，都支持 Agent 接入</span><span lang="en">Agent integration across every service</span></h3><p class="localized"><span lang="zh-CN">从 VPN、通知到 AI Gateway、Proxy、Chat 和 NAT VPS，Agent 接入能力覆盖整个服务目录。</span><span lang="en">From VPN and notifications to AI Gateway, Proxy, Chat and NAT VPS, Agent integration spans the entire service catalog.</span></p></div></div>
-            <div class="principle"><span class="number">02</span><div><h3 class="localized"><span lang="zh-CN">每一项服务，都将提供对应 Skill</span><span lang="en">Dedicated Skills for each service</span></h3><p class="localized"><span lang="zh-CN">我们将为所有服务陆续提供对应的 Skill，让 Agent 了解如何接入与使用服务。</span><span lang="en">Dedicated Skills will be added to every service, giving your Agent instructions for connecting to and using it.</span></p></div></div>
-            <div class="principle"><span class="number">03</span><div><h3 class="localized"><span lang="zh-CN">把服务能力带进 Agent 工作流</span><span lang="en">Bring services into Agent workflows</span></h3><p class="localized"><span lang="zh-CN">把服务接入 Agent，让服务能力成为任务执行的一部分，而不只是独立使用的工具。</span><span lang="en">Connect services to your Agent so it can use them as part of your tasks, rather than keeping them as standalone tools.</span></p></div></div>
-          </div>
+        <div class="agent-band">
+          <h3>Agent-ready by default.</h3>
+          <p class="localized"><span lang="zh-CN">每项服务都提供 API 与接入凭据，Agent 可以直接在任务与工作流中使用；对应 Skill 将陆续提供。</span><span lang="en">Every service exposes an API and credentials, so agents can use it inside tasks and workflows. Dedicated Skills are on the way.</span></p>
         </div>
       </div>
     </section>
@@ -234,12 +230,40 @@
         <div><p class="kicker">Services, not servers</p><h2 id="about-title" class="localized"><span lang="zh-CN">买你需要的能力，<br>不是一台等待配置的机器。</span><span lang="en">Get the capability you need, not a machine waiting to be configured.</span></h2><p class="philosophy-copy localized"><span lang="zh-CN">从你的实际需求出发，Portcloud 把能力变成可以直接使用的服务，而不是让你先买一台主机，再自己把它变成想要的东西。</span><span lang="en">Your needs should come first. Portcloud turns them into ready-to-use services, instead of making you buy a machine and build everything yourself.</span></p></div>
         <div>
           <div class="principle"><span class="number">01</span><div><h3 class="localized"><span lang="zh-CN">选择能力，不选择机器配置</span><span lang="en">Choose capabilities, not machine specs</span></h3><p class="localized"><span lang="zh-CN">先看服务能帮你解决什么问题，而不是从 CPU、内存和容器开始。</span><span lang="en">Start with the problem a service solves, not CPU, memory or containers.</span></p></div></div>
-          <div class="principle"><span class="number">02</span><div><h3 class="localized"><span lang="zh-CN">接入使用，不从零部署</span><span lang="en">Connect and use, not deploy from scratch</span></h3><p class="localized"><span lang="zh-CN">进入服务网站，按服务的接入方式配置使用。无需先部署你自己的服务实例。</span><span lang="en">Visit the service website and follow its setup instructions. No need to deploy your own instance first.</span></p></div></div>
+          <div class="principle"><span class="number">02</span><div><h3 class="localized"><span lang="zh-CN">接入使用，不从零部署</span><span lang="en">Connect and use, not deploy from scratch</span></h3><p class="localized"><span lang="zh-CN">进入服务网站，按服务的接入方式配置使用，无需先部署你自己的服务实例。</span><span lang="en">Visit the service website and follow its setup instructions. No need to deploy your own instance first.</span></p></div></div>
           <div class="principle"><span class="number">03</span><div><h3 class="localized"><span lang="zh-CN">专注你的应用和工作流</span><span lang="en">Focus on your apps and workflows</span></h3><p class="localized"><span lang="zh-CN">基础设施由 Portcloud 管理，你把精力留给真正想完成的事情。</span><span lang="en">Portcloud manages the infrastructure so you can focus on what you want to accomplish.</span></p></div></div>
         </div>
       </div>
     </section>
-    <div class="wrap"><div class="closing"><div><h2 class="localized"><span lang="zh-CN">少一套基础设施，多一点创造。</span><span lang="en">Less infrastructure. More room to create.</span></h2><p>Pay for the service, not the server.</p></div><a class="button" href="#services"><span class="localized"><span lang="zh-CN">找到你需要的服务</span><span lang="en">Find your service</span></span> <span aria-hidden="true">→</span></a></div></div>
+    <section class="section" id="flow" aria-labelledby="flow-title">
+      <div class="wrap">
+        <div class="section-heading"><div><p class="kicker">Configure → Use</p><h2 id="flow-title" class="localized"><span lang="zh-CN">配置即用，还是从零搭建。</span><span lang="en">Configure and use, or build from scratch.</span></h2></div><p class="localized"><span lang="zh-CN">三步开始使用，还是六步搭建维护。</span><span lang="en">Three steps to start using — or six steps to build and maintain.</span></p></div>
+        <div class="flow-grid">
+          <article class="flow-card">
+            <h3 class="flow-card-title localized"><span lang="zh-CN">自建</span><span lang="en">DIY</span></h3>
+            <ol class="flow-list">
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="7" rx="2"/><rect x="4" y="13" width="16" height="7" rx="2"/><path d="M8 7.5h.01M8 16.5h.01"/></svg><span>Create VM</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v10m-4-4 4 4 4-4M5 19.5h14"/></svg><span>Install</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 14V4M8 8l4-4 4 4M5 19.5h14"/></svg><span>Deploy</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg><span>Configure DNS</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg><span>Configure SSL</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg><span>Maintain</span></li>
+            </ol>
+            <p class="flow-note localized"><span lang="zh-CN">买一台主机，自己搭好每一步，并一直维护下去。</span><span lang="en">Buy a machine, build every step yourself, and keep maintaining it.</span></p>
+          </article>
+          <article class="flow-card flow-card--port">
+            <h3 class="flow-card-title">Portcloud</h3>
+            <ol class="flow-list">
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2.5"/><circle cx="15" cy="17" r="2.5"/></svg><span>Configure</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="12" r="3.5"/><path d="M11.5 12H20m-3.5 0v3.5"/></svg><span>Get endpoint / credentials</span><svg class="flow-arrow" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18m-5-5 5 5 5-5"/></svg></li>
+              <li class="flow-node"><svg class="flow-node-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5Z"/></svg><span>Use</span></li>
+            </ol>
+            <p class="flow-note localized"><span lang="zh-CN">配置你需要的服务，拿到 endpoint 或凭据即可使用。</span><span lang="en">Configure the service you need and get an endpoint or credentials to start using it.</span></p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <div class="wrap"><div class="closing"><div><h2 class="localized"><span lang="zh-CN">少一套基础设施，多一点创造。</span><span lang="en">Less infrastructure. More room to create.</span></h2><p class="localized"><span lang="zh-CN">从需求开始，而不是从部署开始。</span><span lang="en">Start with what you need, not what you need to deploy.</span></p></div><a class="button" href="#services"><span class="localized"><span lang="zh-CN">找到你需要的服务</span><span lang="en">Find your service</span></span> <span aria-hidden="true">→</span></a></div></div>
   </main>
   <footer>
     <div class="wrap">

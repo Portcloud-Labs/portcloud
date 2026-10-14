@@ -16,7 +16,7 @@
       label.element.setAttribute('aria-label', english ? label.english : label.chinese);
     }
     description.content = english
-      ? 'Portcloud offers ready-to-use services for independent developers and startup teams. Configure the service you need and leave the infrastructure to Portcloud. Need a port. Not a server.'
+      ? 'Portcloud is a Developer Service Cloud: ready-to-use services for developers and startup teams. Need a port. Not a server.'
       : chineseDescription;
     toggle.setAttribute('aria-label', english ? '切换到中文' : 'Switch to English');
   }
