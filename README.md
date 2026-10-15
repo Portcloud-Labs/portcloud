@@ -20,7 +20,7 @@ Portcloud 是面向开发者的服务云（Developer Service Cloud）：开箱�
 
 所有服务默认支持 Agent 接入（Agent-ready by default）：每项服务都提供 API 与接入凭据，Agent 可以直接在任务与工作流中使用；对应 Skill 将陆续提供。
 
-Portcloud Connect 是全球代理出口节点服务（现部署于 vpn.portcloud.online），开箱即用，无需自建与维护节点。
+服务目录末尾的“敬请期待”卡片为后续服务预留位置，不提供跳转入口，并支持中英文切换。
 
 Portcloud Runtime（规划中）是共享主机上的轻量运行环境，通过 NAT 提供网络连接，按需取用，无需独享整台主机。
 
@@ -31,3 +31,8 @@ Portcloud Runtime（规划中）是共享主机上的轻量运行环境，通过
 `index.html` 在解析正文前读取保存的语言，通过 `<html lang>` 和 CSS 选择预置的双语文案及按钮文字，首屏展示不依赖 `assets/language.js` 下载完成。该脚本负责按钮交互、无障碍标签和页面描述的切换。浏览器存储不可用时，默认使用中文，仍可切换语言，但不保存选择。
 
 修改文案时同步维护 `.localized` 内的 `lang="zh-CN"` 和 `lang="en"` 子元素；中文换行可保留 `<br>`。
+
+## 本地工作区
+
+官网源码位于统一工作区的 `portcloud/portcloud-homepage/`。本次仅调整本地目录，GitHub 仓库保持为 [`portcloud-labs/portcloud`](https://github.com/portcloud-labs/portcloud)，线上域名和部署配置不变。
+
