@@ -37,6 +37,12 @@ Portcloud Runtime（规划中）是共享主机上的轻量运行环境，通过
 右下角另一圆形按钮提供统一账号入口：未登录时前往认证中心，已登录时显示头像缩写，点击展开用户名、账号中心和退出登录。菜单支持外点和 Escape 关闭，不列出各服务控制台；服务入口保留在服务目录。浮动控件与顶部导航分离，长用户名不会挤占导航空间。
 
 
+## 品牌命名
+
+- 对外主品牌、版权署名统一为 **Portcloud**，不使用 `Portcloud Labs`、`Portcloud Network` 等其他主体名称。
+- 具体产品保留完整名称，例如 **Portcloud Notify**、**Portcloud VPN**、**Portcloud Notify Toolkit**；账号中心使用「Portcloud 账号」或「Portcloud 统一认证」等功能性称呼。
+- GitHub 组织 `portcloud-labs`、仓库名、域名、API 路径、环境变量、包名和部署标识是实际技术标识，不按显示文案替换；历史归档不重写。
+
 ## 本地工作区
 
 官网源码位于统一工作区的 `portcloud/portcloud-homepage/`。本次仅调整本地目录，GitHub 仓库保持为 [`portcloud-labs/portcloud`](https://github.com/portcloud-labs/portcloud)，线上域名和部署配置不变。
