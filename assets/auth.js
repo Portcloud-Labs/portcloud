@@ -26,7 +26,7 @@
         </button>
         <div id="nav-user-menu" class="nav-user-menu" hidden>
           <p class="nav-user-name"></p>
-          <a class="nav-menu-item localized" href="${AUTH_BASE}/account">
+          <a class="nav-menu-item localized nav-account-link" href="${AUTH_BASE}/account">
             <span lang="zh-CN">账号中心</span><span lang="en">Account</span>
           </a>
           <button class="nav-menu-item nav-logout-btn localized" type="button">
@@ -40,6 +40,9 @@
     const menu = container.querySelector('.nav-user-menu');
     container.querySelector('.nav-user-avatar').textContent = initial;
     container.querySelector('.nav-user-name').textContent = displayName;
+    const accountUrl = new URL(`${AUTH_BASE}/account`);
+    accountUrl.searchParams.set('return_to', window.location.href);
+    container.querySelector('.nav-account-link').href = accountUrl.href;
 
     function setMenuOpen(open) {
       menu.hidden = !open;
