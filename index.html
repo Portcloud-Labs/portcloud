@@ -26,9 +26,7 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     html:not([lang="en"]) .localized > [lang="en"],
-    html[lang="en"] .localized > [lang="zh-CN"],
-    html:not([lang="en"]) .language-toggle > [lang="zh-CN"],
-    html[lang="en"] .language-toggle > [lang="en"] { display: none; }
+    html[lang="en"] .localized > [lang="zh-CN"] { display: none; }
     body { margin: 0; font-family: var(--font); color: var(--ink); background: #fff; line-height: 1.65; -webkit-font-smoothing: antialiased; }
     a { color: inherit; text-decoration: none; }
     a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); outline-offset: 6px; }
@@ -43,24 +41,22 @@
     .nav-links { display: flex; align-items: center; gap: 30px; color: var(--muted); font-size: 14px; }
     .nav-links a:hover, .footer-links a:hover { color: var(--blue); }
     .nav-actions { display: flex; align-items: center; gap: 16px; }
-    .language-toggle { border: 1px solid var(--line); border-radius: 999px; padding: 10px 14px; background: #fff; color: var(--ink); font: 600 13px var(--font); cursor: pointer; }
-    .language-toggle:hover { border-color: var(--blue); color: var(--blue); }
+    .floating-controls { position: fixed; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px)); z-index: 20; display: flex; flex-direction: column; gap: 12px; }
+    .floating-control { display: inline-flex; align-items: center; justify-content: center; width: 48px; height: 48px; flex: none; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: #fff; color: var(--ink); box-shadow: 0 4px 18px #0f162a14; cursor: pointer; }
+    .floating-control:hover { border-color: var(--blue); color: var(--blue); }
+    .floating-control svg { width: 22px; height: 22px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
     .button { display: inline-flex; align-items: center; justify-content: center; gap: 14px; padding: 13px 24px; border-radius: 999px; font-size: 14px; font-weight: 650; transition: transform .18s, box-shadow .18s; }
     .button:hover { transform: translateY(-2px); }
     .primary { background: var(--gradient); color: #fff; box-shadow: 0 8px 24px #0032fc20; }
     .secondary { border: 1px solid var(--line); background: #fff; }
     .nav-auth { display: flex; align-items: center; }
-    .nav-login { font-size: 13px; padding: 10px 18px; }
     .nav-user-dropdown { position: relative; }
-    .nav-user-btn { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; border-radius: 999px; border: 1px solid var(--line); background: #fff; cursor: pointer; color: var(--ink); font: 600 13px var(--font); }
-    .nav-user-btn:hover { border-color: var(--blue); }
-    .nav-user-avatar { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #edf2ff; color: var(--blue); font-size: 12px; font-weight: 700; }
-    .nav-user-name { max-width: 120px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-    .nav-user-arrow { transition: transform .18s; color: var(--muted); }
-    .nav-user-btn[aria-expanded="true"] .nav-user-arrow { transform: rotate(180deg); }
-    .nav-user-menu { position: absolute; top: calc(100% + 8px); right: 0; min-width: 160px; padding: 6px; border-radius: 14px; background: #fff; border: 1px solid var(--line); box-shadow: 0 16px 36px -16px rgba(15,23,42,0.18); z-index: 100; display: flex; flex-direction: column; gap: 2px; }
+    .nav-user-avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: #edf2ff; color: var(--blue); font: 700 16px var(--font); }
+    .nav-user-name { margin: 0 6px 4px; padding: 8px 6px 10px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+    .nav-user-menu { position: absolute; bottom: 0; right: calc(100% + 12px); width: 260px; max-width: calc(100vw - 92px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)); max-height: 70vh; max-height: calc(100dvh - 32px - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px)); overflow-y: auto; padding: 6px; border-radius: 14px; background: #fff; border: 1px solid var(--line); box-shadow: 0 16px 36px -16px rgba(15,23,42,0.18); display: flex; flex-direction: column; gap: 2px; }
     .nav-user-menu[hidden] { display: none; }
-    .nav-menu-item { display: flex; align-items: center; padding: 9px 12px; border-radius: 8px; font-size: 13px; color: var(--ink); text-decoration: none; background: transparent; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit; }
+    .nav-menu-item { display: flex; align-items: center; min-height: 44px; padding: 9px 12px; border-radius: 8px; font-size: 13px; color: var(--ink); text-decoration: none; background: transparent; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit; }
     .nav-menu-item:hover { background: #f4f7fc; color: var(--blue); }
     .nav-logout-btn { border-top: 1px solid var(--line); margin-top: 4px; padding-top: 10px; color: #dc2626; }
     .nav-logout-btn:hover { background: #fef2f2; color: #b91c1c; }
@@ -159,7 +155,6 @@
       .brand img { width: 145px; height: 48px; }
       .nav-inner { gap: 10px; }
       .nav-inner .button { padding: 10px 16px; font-size: 12px; }
-      .nav-actions .primary { display: none; }
       .hero-actions .button { width: 100%; padding: 15px 18px; }
       .product { padding: 24px; }
       .products { grid-template-columns: 1fr; }
@@ -184,16 +179,21 @@
         <a href="https://github.com/portcloud-labs" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </div>
       <div class="nav-actions">
-        <button class="language-toggle" type="button"><span lang="en">EN</span><span lang="zh-CN">中文</span></button>
-        <div id="nav-auth" class="nav-auth">
-          <a class="button secondary nav-login" href="https://auth.portcloud.online/login?return_to=https://portcloud.online/">
-            <span class="localized"><span lang="zh-CN">登录</span><span lang="en">Sign in</span></span>
-          </a>
-        </div>
         <a class="button primary" href="#services"><span class="localized"><span lang="zh-CN">探索服务</span><span lang="en">Explore services</span></span> <span aria-hidden="true">→</span></a>
       </div>
     </div>
   </nav>
+  <div class="floating-controls">
+    <button class="floating-control language-toggle" type="button" aria-label="Switch to English">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9Z"/></svg>
+    </button>
+    <div id="nav-auth" class="nav-auth">
+      <a class="floating-control nav-login" href="https://auth.portcloud.online/login?return_to=https://portcloud.online/">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a8 8 0 0 1 16 0v2"/></svg>
+        <span class="localized sr-only"><span lang="zh-CN">登录</span><span lang="en">Sign in</span></span>
+      </a>
+    </div>
+  </div>
   <main id="top">
     <header class="hero">
       <div class="wrap hero-content">

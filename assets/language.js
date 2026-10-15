@@ -19,6 +19,7 @@
       ? 'Portcloud is a Developer Service Cloud: ready-to-use services for developers and startup teams. Need a port. Not a server.'
       : chineseDescription;
     toggle.setAttribute('aria-label', english ? '切换到中文' : 'Switch to English');
+    toggle.title = toggle.getAttribute('aria-label');
   }
 
   toggle.addEventListener('click', () => {
